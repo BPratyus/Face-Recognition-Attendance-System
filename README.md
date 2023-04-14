@@ -12,3 +12,7 @@ Attendance System based on the Face_recognition module
 Uses ***index.html*** in `templates` and ***style.css*** in `static` folders for rendering
 - ***app.py*** for running the server
 - A subprocess called from main file for parallel process execution
+
+## Performance
+- On Desktop face recognition is seameless under light and dark conditions
+  ![Light Conditions](Performance 1.jpg) ![Dark Conditions](Performance 2.jpg)
