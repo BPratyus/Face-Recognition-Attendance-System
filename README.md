@@ -16,6 +16,6 @@ Uses ***index.html*** in `templates` and ***style.css*** in `static` folders for
 ## Performance
 - On Desktop face recognition is seameless under light and dark conditions
   
-  ![Light Conditions](Performance 1.jpg) 
+  ![Light Conditions](https://raw.githubusercontent.com/Prats-23/Face-Recognition-Attendance-System/main/Performance%201.jpg)
   
-  ![Dark Conditions](Performance 2.png)
+  ![Dark Conditions](https://raw.githubusercontent.com/Prats-23/Face-Recognition-Attendance-System/main/Performance%202.png)
