@@ -1,5 +1,5 @@
 # Face-Recognition-Attendance-System
-A face recognition attendance system is a computerized system that uses facial recognition technology to capture and record employee attendance. This system works by using a camera to capture an image of an person's face, and then analyzing that image to verify the person's identity. If the system recognizes the person, it will record their attendance for that day.
+A face recognition attendance system is a computerized system that uses facial recognition technology to capture and record employee attendance. This system works by using a camera to capture an image of an person's face, and then analyzing that image to verify the person's identity. If the system recognizes the person, it will record their attendance for that day in a CSV File.
 
 ## For Deployment on Windows
 [***main.py***](main.py)
