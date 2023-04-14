@@ -15,4 +15,7 @@ Uses ***index.html*** in `templates` and ***style.css*** in `static` folders for
 
 ## Performance
 - On Desktop face recognition is seameless under light and dark conditions
-  ![Light Conditions](Performance 1.jpg) ![Dark Conditions](Performance 2.jpg)
+  
+  ![Light Conditions](Performance 1.jpg) 
+  
+  ![Dark Conditions](Performance 2.png)
