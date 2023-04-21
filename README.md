@@ -17,11 +17,11 @@ Uses [***index.html***](/templates/index.html) in `templates` and [***style.css*
 ## Performance
 - On Desktop face recognition is seameless under light and dark conditions
   
-  ![Light Conditions](https://raw.githubusercontent.com/Prats-23/Face-Recognition-Attendance-System/main/Performance%201.jpg)
+  ![Light Conditions](/images/Performance_1.jpg)
   
-  ![Dark Conditions](https://raw.githubusercontent.com/Prats-23/Face-Recognition-Attendance-System/main/Performance%202.png)
+  ![Dark Conditions](/images/Performance_2.png)
   
   ## Front-End 
     A Flask server to view the latest Attendance Detail and download it in .CSV form and upload new face Encodings data to the Rpi
     
-    ![Webpage](https://raw.githubusercontent.com/Prats-23/Face-Recognition-Attendance-System/main/Flask%20Server.jpg)
+    ![Webpage](/images/Flask_Server.jpg)
