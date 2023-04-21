@@ -2,7 +2,7 @@
 __pycache__/
 Training_images/
 *.data
-.idea
+*.idea
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
