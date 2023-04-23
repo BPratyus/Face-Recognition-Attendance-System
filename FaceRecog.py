@@ -15,6 +15,10 @@ import picamera
 import numpy as np
 import RPi.GPIO as GPIO
 from time import sleep
+import requests
+import pickle
+# from myapp import app
+import subprocess
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -29,7 +33,7 @@ camera.resolution = (320, 240)
 camera.rotation=180
 output = np.empty((240, 320, 3), dtype=np.uint8)
 
-path = 'Training_images'
+path = './Training_images'
 images = []
 classNames = []
 myList = os.listdir(path)
@@ -50,24 +54,76 @@ def findEncodings(images):
         encodeList.append(encode)
     return encodeList
 
+names = []
+
+def encode(fpath):
+    encodeListKnown = findEncodings(images)
+    print('Encoded List:', encodeListKnown)
+
+    data = dict(zip(classNames, encodeListKnown))
+    print('dictionary', data)
+    with open(fpath, 'wb') as filehandle:
+        pickle.dump(data, filehandle, protocol=pickle.HIGHEST_PROTOCOL)
+    # print(data)
+    print('Encoding Complete')
+    return encodeListKnown
+
 def markAttendance(name):
-    with open('Attendance.csv', 'a') as f:
+    
+    with open('./Attendance.csv', 'a') as f:
         writerobj = writer(f)
 
         now = datetime.now()
         dtString = now.strftime('%H:%M:%S')
 
         writerobj.writerow([name, dtString])
+   
 
-    GPIO.output(buzz,GPIO.HIGH)
-    sleep(0.5)
-    GPIO.output(buzz,GPIO.LOW)
+        # url = "https://api.thingspeak.com/update.json"
+        # query = {'field1': name,'field2': now.strftime('%H:%M:%S'), 'key':'40G2MFXTNCO6VJ24' }
+        # headers = {"Content-typZZe": "application/x-www-form-urlencoded","Accept": "text/plain"}
+
+        # x = requests.post(url,data=query)
+        # print(x.text)
+
+        GPIO.output(buzz,GPIO.HIGH)
+        sleep(0.5)
+        GPIO.output(buzz,GPIO.LOW)
 
 nameList = []
-NameRep=[]
-encodeListKnown = findEncodings(images)
-print('Encoding Complete')
+NameRep = []
 
+# encodeListKnown = findEncodings(images)
+# print('Encoding Complete')
+fpath = "./listfile.data"
+if os.stat(fpath).st_size != 0:
+    with open(fpath, 'rb') as filehandle:
+        data = pickle.load(filehandle)
+        # for x, y in data:
+        names = (list(data.keys()))
+        # print(names)
+        encodeListKnown = list(data.values())
+        # print(encodeListKnown)
+
+
+    if names == classNames:
+        print("Previous Encoding used")
+    else:
+        encodeListKnown = encode(fpath)
+else:
+    encodeListKnown = encode(fpath)
+
+GPIO.output(buzz,GPIO.HIGH)
+sleep(1)
+GPIO.output(buzz,GPIO.LOW)
+
+sudo_pass = 'root'
+command='python ./myapp.py'
+command=command.split()
+cmd1=subprocess.Popen(['echo',sudo_pass], stdout=subprocess.PIPE)
+subprocess.Popen(['sudo','-S']+command,stdin=cmd1.stdout)
+# os.system("sudo python app.py")
+# app.index()
 # Load a sample picture and learn how to recognize it.
 # print("Loading known face image(s)")
 # obama_image = face_recognition.face_locations("Pratyus.jpg")
@@ -99,9 +155,8 @@ while True:
             name = classNames[matchIndex].upper()
             if name not in nameList:
                 NameRep.append(name)
-                if len(NameRep) >2:
+                if len(NameRep)>2 :
                     NameRep.clear()
-                    NameRep.si
                     nameList.append(name)
                     markAttendance(name)
             print(name)
