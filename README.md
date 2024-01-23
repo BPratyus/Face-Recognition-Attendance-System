@@ -1,5 +1,12 @@
 # Face-Recognition-Attendance-System
 A face recognition attendance system is a computerized system that uses facial recognition technology to capture and record employee attendance. This system works by using a camera to capture an image of an person's face, and then analyzing that image to verify the person's identity. If the system recognizes the person, it will record their attendance for that day in a CSV File.
+
+## Contributors  
+<a href="https://github.com/BPratyus/Face-Recognition-Attendance-System/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=BPratyus/Face-Recognition-Attendance-System" />
+</a>
+
+
 > [!NOTE]  
 >  We use [Face_Recognition](https://github.com/ageitgey/face_recognition) module to deploy this
 ## For Deployment on Windows
